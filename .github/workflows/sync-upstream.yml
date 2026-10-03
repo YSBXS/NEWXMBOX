@@ -1,0 +1,20 @@
+name: Sync XMBOX Upstream to main
+on:
+  workflow_dispatch: # 仅网页手动触发，去掉schedule避免意外覆盖
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout full history
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Sync Tosencen/XMBOX to main
+        uses: tgymnich/fork-sync@v1.8
+        with:
+          owner: Tosencen
+          repo: XMBOX
+          base: main
+          head: main
