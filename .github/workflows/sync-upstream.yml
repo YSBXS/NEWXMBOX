@@ -5,12 +5,12 @@ jobs:
   sync:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout
+      - name: Checkout full history
         uses: actions/checkout@v4
         with:
           fetch-depth: 0
-          token: ${{ secrets.FORK_SYNC_TOKEN }}
-      - name: Sync upstream
+        # 这里不要写token字段！直接使用系统自带GITHUB_TOKEN
+      - name: Sync follow upstream
         run: |
           git remote add upstream https://github.com/Tosencen/XMBOX.git
           git fetch upstream main
